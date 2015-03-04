@@ -94,7 +94,7 @@ function addHolder() {
 
         var geometry = new THREE.BoxGeometry(2, 2, 2);
         var material = new THREE.MeshPhongMaterial({
-            map: _.sample(faces)
+            map: faces[i]
         });
 
         var cube = new THREE.Mesh(geometry, material);
@@ -232,7 +232,7 @@ function restartScene() {
         level = 1;
     }
 
-    myLevel.innerText = comments[level - 1] + ': Level ' + level + ' of ' + totalLevels;
+    myLevel.innerText = 'Sindre Birthday Bash'
     scene.remove(holder);
     addHolder();
 }
@@ -250,7 +250,7 @@ function onWindowResize() {
 }
 
 window.onload = function() {
-    myLevel.innerText = comments[level - 1] + ': Level ' + level + ' of ' + totalLevels;
+    myLevel.innerText = 'Sindre Birthday Bash'
     myScene();
     addHolder();
     animate();
