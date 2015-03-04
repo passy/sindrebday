@@ -29,6 +29,7 @@ var complete = false;
 var comments = ['Easy', 'Tricky', 'Almost there'];
 var myLevel = document.getElementById('level');
 var myScore = document.getElementById('score');
+var intro   = document.getElementById('intro');
 var faces = ['passy', 'addy', 'stephen']
     .map(function(o) {
         return 'faces/' + o + '.jpeg';
@@ -209,6 +210,7 @@ function onDocumentMouseDown(event) {
                     } else {
                         // OMG, please make this prettier!
                         myScore.innerHTML = '<strong>You win!</strong> <span class="effing">Happy Birthday, Sindre!</span> <br><img class="winimg" src="sindre.jpg" alt="SINDRE IS THE BEST">';
+                        intro.hidden = true;
                     }
                 };
             }
@@ -218,6 +220,7 @@ function onDocumentMouseDown(event) {
 
 function restartScene() {
     myScore.innerHTML = '';
+    intro.hidden = false;
 
     if (level < totalLevels) {
         speed += 0.005;
