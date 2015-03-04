@@ -177,9 +177,6 @@ function onDocumentMouseDown(event) {
     event.preventDefault();
 
     if (complete) {
-        complete = false;
-        score = 0;
-        restartScene();
         return;
     }
 
