@@ -208,7 +208,7 @@ function onDocumentMouseDown(event) {
                         myScore.innerHTML = '<strong>You got \'em all!</strong> Click the screen for level ' + (level + 1) + '.';
                     } else {
                         // OMG, please make this prettier!
-                        myScore.innerHTML = '<strong>You win!</strong> Happy Birthday, Sindre! <br><img class="winimg" src="sindre.jpg" alt="SINDRE IS THE BEST">';
+                        myScore.innerHTML = '<strong>You win!</strong> <span class="effing">Happy Birthday, Sindre!</span> <br><img class="winimg" src="sindre.jpg" alt="SINDRE IS THE BEST">';
                     }
                 };
             }
