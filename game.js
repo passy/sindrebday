@@ -21,7 +21,7 @@ var holder;
 var intersects;
 var particles = [];
 var level = 1;
-var totalLevels = 3;
+var totalLevels = 1;
 var score = 0;
 var totalTargets = 3;
 var speed = 0.01;
@@ -29,9 +29,16 @@ var complete = false;
 var comments = ['Easy', 'Tricky', 'Almost there'];
 var myLevel = document.getElementById('level');
 var myScore = document.getElementById('score');
-var faces = ['passy', 'addy', 'stephen'].map(function (o) {
-    return 'faces/' + o + '.png';
-});
+var faces = ['passy', 'addy', 'stephen']
+    .map(function (o) {
+        return 'faces/' + o + '.jpeg';
+    }).map(function (o) {
+        var texture = new THREE.ImageUtils.loadTexture(o);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.name = o;
+        return texture;
+    });
 
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
@@ -79,7 +86,7 @@ function addHolder () {
         ranCol.setRGB( Math.random(), Math.random(), Math.random() );
 
         var geometry = new THREE.BoxGeometry(2,2,2);
-        var material = new THREE.MeshPhongMaterial( {color: ranCol, ambient: ranCol } );
+        var material = new THREE.MeshPhongMaterial( {map: _.sample(faces)} );
 
         var cube = new THREE.Mesh(geometry, material);
         cube.position.x = i * 5;
@@ -183,14 +190,15 @@ function onDocumentMouseDown(event) {
                 score += 1;
 
                 if (score < totalTargets) {
-                    myScore.innerHTML = '<span class='hit'>HIT!</span> Score: ' + score + '/' + totalTargets;
+                    myScore.innerHTML = '<span class="hit">HIT!</span> Score: ' + score + '/' + totalTargets;
                 } else {
                     complete = true;
 
                     if (level < totalLevels) {
-                        myScore.innerHTML = '<strong>You got 'em all!</strong> Click the screen for level '  + (level+1) + '.';
+                        myScore.innerHTML = '<strong>You got \'em all!</strong> Click the screen for level '  + (level+1) + '.';
                     } else {
-                        myScore.innerHTML = '<strong>You win!</strong> Click the screen to play again.';
+                        // OMG, please make this prettier!
+                        myScore.innerHTML = '<strong>You win!</strong> Happy Birthday, Sindre! <br><img class="winimg" src="sindre.png" alt="SINDRE IS THE BEST">';
                     }
                 };
             }
