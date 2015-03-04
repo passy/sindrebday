@@ -21,7 +21,7 @@ var holder;
 var intersects;
 var particles = [];
 var level = 1;
-var totalLevels = 1;
+var totalLevels = 3;
 var score = 0;
 var totalTargets = 3;
 var speed = 0.01;
